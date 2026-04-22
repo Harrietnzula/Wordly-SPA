@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wordly – Interactive Dictionary</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-w">W</span><span class="logo-rest">ordly</span>
+    </div>
+    <p class="tagline">Your own personal interactive dictionary</p>
+  </header>
+
+  <!-- ── SEARCH SECTION ── -->
+  <main>
+    <section class="search-section">
+      <div class="search-wrapper">
+        <input
+          type="text"
+          id="wordInput"
+          placeholder="Search a word…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="searchBtn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+      </div>
+      <div id="errorMsg" class="error-msg" role="alert" aria-live="polite"></div>
+    </section>
+
+    <!-- ── RESULT SECTION ── -->
+    <section id="resultSection" class="result-section hidden" aria-live="polite">
+
+      <!-- Word header -->
+      <div class="word-header">
+        <div class="word-title-row">
+          <h1 id="wordTitle"></h1>
+          <button id="favoriteBtn" class="fav-btn" title="Save to favorites">
+            <svg id="favIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="phonetic-row">
+          <span id="phonetic" class="phonetic"></span>
+          <button id="audioBtn" class="audio-btn hidden" title="Listen to pronunciation">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Meanings -->
+      <div id="meaningsContainer" class="meanings-container"></div>
+
+      <!-- Source -->
+      <div id="sourceRow" class="source-row hidden">
+        <span>Source:</span>
+        <a id="sourceLink" href="#" target="_blank" rel="noopener noreferrer"></a>
+      </div>
+    </section>
+
+    <!-- ── LOADING ── -->
+    <div id="loader" class="loader hidden">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+
+    <!-- ── FAVORITES ── -->
+    <section id="favSection" class="fav-section hidden">
+      <h2 class="fav-heading">Saved Words</h2>
+      <ul id="favList" class="fav-list"></ul>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <span>Powered by <a href="https://dictionaryapi.dev" target="_blank" rel="noopener">Harriet Nzula Free Dictionary API</a></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
